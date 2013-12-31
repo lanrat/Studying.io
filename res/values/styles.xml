@@ -69,7 +69,7 @@
     </style>
 
     <style name="ExampleBoxTitle" parent="BoxTitle">
-        <item name="android:textColor">#d36994</item>
+        <item name="android:textColor">#FF9696</item>
     </style>
 
     <style name="HintBoxTitle" parent="BoxTitle">
