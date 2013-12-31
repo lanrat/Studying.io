@@ -52,21 +52,22 @@
                     style="@style/BoxText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/test_question" />
+                    android:text="@string/test_example" />
 
                 <TextView
                     style="@style/ExampleBoxTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:text="@string/question_title" />
+                    android:text="@string/example_title" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/hintBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp" >
+                android:layout_marginBottom="30dp"
+                android:visibility="gone" >
 
                 <TextView
                     android:id="@+id/hintText"
@@ -87,7 +88,8 @@
                 android:id="@+id/answerBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp" >
+                android:layout_marginBottom="10dp"
+                android:visibility="gone" >
 
                 <TextView
                     android:id="@+id/answerText"
@@ -121,12 +123,21 @@
             android:layout_alignParentLeft="true" />
 
         <TextView
-            android:id="@+id/rightButton"
+            android:id="@+id/answerButton"
             style="@style/AnswerButton"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/hintButton" />
+
+        <TextView
+            android:id="@+id/questionButton"
+            style="@style/QuestionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/hintButton"
+            android:visibility="gone" />
     </RelativeLayout>
 
 </RelativeLayout>
