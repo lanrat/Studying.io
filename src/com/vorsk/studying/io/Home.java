@@ -1,9 +1,10 @@
 package com.vorsk.studying.io;
 
-import android.os.Bundle;
-import android.app.Activity;
+import com.actionbarsherlock.app.SherlockActivity;
 
-public class Home extends Activity {
+import android.os.Bundle;
+
+public class Home extends SherlockActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
