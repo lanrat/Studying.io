@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Studying.io</string>
+    <string name="test_question">Write an algorithm to decide if two ascii strings are anagrams or not.</string>
+    <string name="test_answer">Possible answer:return sort(a) == sort(b). Or create two arrays of 255 length, and loop through each string and add the character count to the array, then compare the two arrays.</string>
+    <string name="test_hint">What special characteristics do anagrams have that other strings don\'t have?</string>
+        
+    <string name="answer_title">ANSWER</string>
+    <string name="hint_title">HINT</string>
+    <string name="question_title">QUESTION</string>
+    
+    <string name="answer_button">CHECK ANSWER</string>
+    <string name="question_button">NEXT QUESTION</string>
+    <string name="hint_button">HINT</string>
+</resources>
