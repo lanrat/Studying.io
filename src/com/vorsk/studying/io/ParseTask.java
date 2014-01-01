@@ -33,7 +33,6 @@ public class ParseTask extends AsyncTask<Void, Void, Void> {
 	@Override
 	protected void onPreExecute() {
 		super.onPreExecute();
-
 		// Showing progress dialog
 		pDialog.show();
 	}
@@ -59,9 +58,11 @@ public class ParseTask extends AsyncTask<Void, Void, Void> {
 				}
 			} catch (JSONException e) {
 				e.printStackTrace();
+				Log.e("ParseTask", "Couldn't parse json from file");
+				context.deleteFile(context.getString(R.string.local_JSON_filename));
 			}
 		} else {
-			Log.e("LoadingTask", "Couldn't get any data from the file");
+			Log.e("ParseTask", "Couldn't get any data from the file");
 		}
 		
 		//shuffle the questions loaded

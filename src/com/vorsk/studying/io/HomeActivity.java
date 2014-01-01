@@ -25,15 +25,7 @@ public class HomeActivity extends SherlockActivity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         
-        if (qm == null){
-        	qm = new QuizManager(this);
-        }
-        
-        if (qm.JSONFileExists()) {
-        	this.dataReady();
-        }else {
-        	qm.downloadData();
-        }
+        startStudying();
         
         //make the buttons work
         findViewById(R.id.hintButton).setOnClickListener(this);
@@ -48,6 +40,18 @@ public class HomeActivity extends SherlockActivity implements OnClickListener {
 	        .setMinDaysUntilPrompt(4)
 	        .setMinLaunchesUntilPrompt(10)
 	        .init();
+    }
+    
+    private void startStudying() {
+        if (qm == null){
+        	qm = new QuizManager(this);
+        }
+        
+        if (qm.JSONFileExists()) {
+        	this.dataReady();
+        }else {
+        	qm.downloadData();
+        }
     }
     
     public void dataReady() {
@@ -67,7 +71,11 @@ public class HomeActivity extends SherlockActivity implements OnClickListener {
 			}
 			break;
 		case R.id.questionButton:
-			displayNextQuestion();
+			if (question == null) {
+				startStudying();
+			}else {
+				displayNextQuestion();
+			}
 			break;
 		case R.id.answerButton:
 			answerShown = true;

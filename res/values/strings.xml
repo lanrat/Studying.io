@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Studying.io</string>
-    <string name="JSON_URL">http://studying.io</string>
+    <string name="JSON_URL">http://studying.io/q.json</string>
     <string name="local_JSON_filename">q.json</string>
     <string name="downloading_message">Acquiring latest questions</string>
     <string name="loading_message">Loading questions…</string>
