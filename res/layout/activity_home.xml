@@ -37,7 +37,7 @@
 
                 <TextView
                     style="@style/QuestionBoxTitle"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:text="@string/question_title" />
@@ -58,7 +58,7 @@
 
                 <TextView
                     style="@style/ExampleBoxTitle"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:text="@string/example_title" />
@@ -80,7 +80,7 @@
 
                 <TextView
                     style="@style/HintBoxTitle"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:text="@string/hint_title" />
@@ -102,7 +102,7 @@
 
                 <TextView
                     style="@style/AnswerBoxTitle"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:text="@string/answer_title" />
