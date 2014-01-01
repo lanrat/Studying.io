@@ -1,6 +1,7 @@
 package com.vorsk.studying.io;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.tjeannin.apprate.AppRate;
 
 import android.os.Bundle;
 import android.view.View;
@@ -38,8 +39,15 @@ public class HomeActivity extends SherlockActivity implements OnClickListener {
         findViewById(R.id.hintButton).setOnClickListener(this);
         findViewById(R.id.questionButton).setOnClickListener(this);
         findViewById(R.id.answerButton).setOnClickListener(this);
-        
+ 
         updateDisplay();
+        
+        //AppRate
+        new AppRate(this)
+	        .setShowIfAppHasCrashed(false)
+	        .setMinDaysUntilPrompt(4)
+	        .setMinLaunchesUntilPrompt(10)
+	        .init();
     }
     
     public void dataReady() {
