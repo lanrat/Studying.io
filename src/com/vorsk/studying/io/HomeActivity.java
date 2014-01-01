@@ -5,6 +5,7 @@ import com.tjeannin.apprate.AppRate;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
@@ -33,8 +34,9 @@ public class HomeActivity extends SherlockActivity implements OnClickListener {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         
         long lastDownload = settings.getLong(PREF_DOWNLOAD_KEY, 0);
-        if ((lastDownload - WEEK_MS) < System.currentTimeMillis()) {
+        if ((lastDownload + WEEK_MS) < System.currentTimeMillis()) {
         	//it has been > 1 week since last download
+        	Log.d("Home Activity","> 1 week since last download");
         	startStudying(true);
         }else {
         	startStudying(false);
