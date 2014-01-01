@@ -1,13 +1,12 @@
 package com.vorsk.studying.io;
 
-import java.util.HashMap;
-
 import com.actionbarsherlock.app.SherlockActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class HomeActivity extends SherlockActivity implements OnClickListener {
@@ -16,7 +15,8 @@ public class HomeActivity extends SherlockActivity implements OnClickListener {
 	private static boolean hintShown = false;
 	private static boolean answerShown = false;
 	private static QuizManager qm;
-	private static HashMap<String, String> question;
+	private static QuizManager.Question question;
+	private static int hintCount = 0;
 
 	
     @Override
@@ -50,8 +50,13 @@ public class HomeActivity extends SherlockActivity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.hintButton:
-			hintShown = true;
-			updateDisplay();
+			if (hintCount >= question.getHintCount()) {
+		         Toast.makeText(this,getString(R.string.no_more_hints), Toast.LENGTH_SHORT).show();
+			}else {
+				hintShown = true;
+				hintCount++;
+				updateDisplay();
+			}
 			break;
 		case R.id.questionButton:
 			displayNextQuestion();
@@ -85,10 +90,10 @@ public class HomeActivity extends SherlockActivity implements OnClickListener {
 		
 		if (question != null)
 		{
-			((TextView)findViewById(R.id.questionText)).setText(question.get(QuizManager.TAG_QUESTION));
-			((TextView)findViewById(R.id.exampleText)).setText(question.get(QuizManager.TAG_EXAMPLE));
-			((TextView)findViewById(R.id.hintText)).setText(question.get(QuizManager.TAG_HINT));
-			((TextView)findViewById(R.id.answerText)).setText(question.get(QuizManager.TAG_ANSWER));
+			((TextView)findViewById(R.id.questionText)).setText(question.getQuestion());
+			((TextView)findViewById(R.id.exampleText)).setText(question.getExample());
+			((TextView)findViewById(R.id.hintText)).setText(question.getHint(hintCount));
+			((TextView)findViewById(R.id.answerText)).setText(question.getAnswer());
 		}
 	}
 	
@@ -96,6 +101,7 @@ public class HomeActivity extends SherlockActivity implements OnClickListener {
 		question = qm.getNextQuestion();
 		hintShown = false;
 		answerShown = false;
+		hintCount = 0;
 		updateDisplay();
 	}
 	

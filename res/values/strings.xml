@@ -5,6 +5,8 @@
     <string name="local_JSON_filename">q.json</string>
     <string name="downloading_message">Acquiring latest questions</string>
     <string name="loading_message">Loading questions…</string>
+    <string name="all_questions_seen">No more questions</string>
+     <string name="no_more_hints">No more hints</string>
     
     <string name="test_question">Why did the chicken cross the road?</string>
     <string name="test_answer">Because it wants to get on the other side!</string>

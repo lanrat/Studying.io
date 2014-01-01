@@ -4,11 +4,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.vorsk.studying.io.QuizManager.Question;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -19,9 +19,9 @@ public class LoadingTask extends AsyncTask<Void, Void, Void> {
 
 	private ProgressDialog pDialog;
 	private Context context;
-	private ArrayList<HashMap<String,String>> questions;
+	private ArrayList<Question> questions;
 
-	public LoadingTask(Context context,ArrayList<HashMap<String,String>> questions) {
+	public LoadingTask(Context context,ArrayList<Question> questions) {
 		this.context = context;
 		this.questions = questions;
 		pDialog = new ProgressDialog(context);
@@ -52,25 +52,10 @@ public class LoadingTask extends AsyncTask<Void, Void, Void> {
 				for (int i = 0; i < qJSON.length(); i++) {
 					JSONObject q = qJSON.getJSONObject(i);
 
-					//int id = q.getInt(QuizManager.TAG_ID);
-					String question = q.getString(QuizManager.TAG_QUESTION);
-					String hint = q.getString(QuizManager.TAG_HINT);
-					String example = q.getString(QuizManager.TAG_EXAMPLE);
-					String answer = q.getString(QuizManager.TAG_ANSWER);
-
-
-					// tmp hashmap for single question
-					HashMap<String, String> questionMap = new HashMap<String, String>();
-
-					// adding each child node to HashMap key => value
-					//questionMap.put(QuizManager.TAG_ID, id);
-					questionMap.put(QuizManager.TAG_QUESTION, question);
-					questionMap.put(QuizManager.TAG_HINT, hint);
-					questionMap.put(QuizManager.TAG_EXAMPLE, example);
-					questionMap.put(QuizManager.TAG_ANSWER, answer);
-
+					QuizManager.Question question = new Question(q);
+					
 					// adding questions to list
-					questions.add(questionMap);
+					questions.add(question);
 				}
 			} catch (JSONException e) {
 				e.printStackTrace();
