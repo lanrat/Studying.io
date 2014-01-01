@@ -16,6 +16,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.PowerManager;
+import android.util.Log;
 import android.widget.Toast;
 
 //usually, subclasses of AsyncTask are declared inside the activity class.
@@ -124,7 +125,8 @@ public class DownloadTask extends AsyncTask<Void, Integer, String> {
 	 }
      mProgressDialog.dismiss();
      if (result != null) {
-         Toast.makeText(context,"Download error: "+result, Toast.LENGTH_LONG).show();
+    	 Log.e("DownloadTask",result);
+         Toast.makeText(context,context.getString(R.string.download_error), Toast.LENGTH_LONG).show();
      }else {
     	 ((HomeActivity)context).dataReady();
      }

@@ -31,7 +31,7 @@ public class QuizManager {
 	public void loadData() {
 		if (questions == null) {
 			questions = new ArrayList<Question>();
-			LoadingTask ld = new LoadingTask(context, questions);
+			ParseTask ld = new ParseTask(context, questions);
 			ld.execute();
 		}
 	}
@@ -55,7 +55,7 @@ public class QuizManager {
 	}
 
 	public Question getNextQuestion() {
-		if (questions == null) {
+		if (questions == null || questions.size() == 0) {
 			return null;
 		}
 		lastQuestion++;

@@ -15,13 +15,13 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-public class LoadingTask extends AsyncTask<Void, Void, Void> {
+public class ParseTask extends AsyncTask<Void, Void, Void> {
 
 	private ProgressDialog pDialog;
 	private Context context;
 	private ArrayList<Question> questions;
 
-	public LoadingTask(Context context,ArrayList<Question> questions) {
+	public ParseTask(Context context,ArrayList<Question> questions) {
 		this.context = context;
 		this.questions = questions;
 		pDialog = new ProgressDialog(context);

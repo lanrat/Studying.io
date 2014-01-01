@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Studying.io</string>
-    <string name="JSON_URL">http://studying.io/q.json</string>
+    <string name="JSON_URL">http://studying.io</string>
     <string name="local_JSON_filename">q.json</string>
     <string name="downloading_message">Acquiring latest questions</string>
     <string name="loading_message">Loading questions…</string>
     <string name="all_questions_seen">No more questions</string>
-     <string name="no_more_hints">No more hints</string>
+    <string name="no_more_hints">No more hints</string>
+    <string name="download_error">Download Error: Unable to connect to the internet</string>
     
-    <string name="test_question">Why did the chicken cross the road?</string>
-    <string name="test_answer">Because it wants to get on the other side!</string>
-    <string name="test_hint">Try running this application with an active internet connection</string>
-    <string name="test_example">Turn on WIFI</string>
+    <string name="test_question">An Active internet connection is required to download questions</string>
+    <string name="test_answer">Try re-running this application with an active internet connection</string>
+    <string name="test_hint">Turn on WIFI or mobile data</string>
+    <string name="test_example">Once questions are downloaded the network connection is no longer needed</string>
         
     <string name="answer_title">ANSWER</string>
     <string name="hint_title">HINT</string>
