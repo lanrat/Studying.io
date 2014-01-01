@@ -3,6 +3,7 @@ package com.vorsk.studying.io;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.tjeannin.apprate.AppRate;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,10 +13,14 @@ import android.widget.Toast;
 
 public class HomeActivity extends SherlockActivity implements OnClickListener {
 
+	private static QuizManager qm;
+	public static final String PREFS_NAME = "StudyingPrefsFile";
+	public static final String PREF_DOWNLOAD_KEY = "last_download";
+	private static final long WEEK_MS = 604800000;
+	
 	//used to save state
 	private static boolean hintShown = false;
 	private static boolean answerShown = false;
-	private static QuizManager qm;
 	private static QuizManager.Question question;
 	private static int hintCount = 0;
 
@@ -25,7 +30,15 @@ public class HomeActivity extends SherlockActivity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         
-        startStudying();
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        
+        long lastDownload = settings.getLong(PREF_DOWNLOAD_KEY, 0);
+        if ((lastDownload - WEEK_MS) < System.currentTimeMillis()) {
+        	//it has been > 1 week since last download
+        	startStudying(true);
+        }else {
+        	startStudying(false);
+        }
         
         //make the buttons work
         findViewById(R.id.hintButton).setOnClickListener(this);
@@ -42,12 +55,12 @@ public class HomeActivity extends SherlockActivity implements OnClickListener {
 	        .init();
     }
     
-    private void startStudying() {
+    private void startStudying(boolean forceDownload) {
         if (qm == null){
         	qm = new QuizManager(this);
         }
         
-        if (qm.JSONFileExists()) {
+        if (!forceDownload && qm.JSONFileExists()) {
         	this.dataReady();
         }else {
         	qm.downloadData();
@@ -72,7 +85,7 @@ public class HomeActivity extends SherlockActivity implements OnClickListener {
 			break;
 		case R.id.questionButton:
 			if (question == null) {
-				startStudying();
+				startStudying(false);
 			}else {
 				displayNextQuestion();
 			}

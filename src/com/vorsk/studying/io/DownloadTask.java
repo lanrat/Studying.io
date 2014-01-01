@@ -14,6 +14,7 @@ import java.net.URL;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.PowerManager;
 import android.util.Log;
@@ -36,7 +37,7 @@ public class DownloadTask extends AsyncTask<Void, Integer, String> {
      mProgressDialog.setCancelable(false);
  }
 
- @SuppressLint("Wakelock")
+@SuppressLint("Wakelock")
 @SuppressWarnings("resource")
 @Override
  protected String doInBackground(Void... nothing) {
@@ -100,6 +101,13 @@ public class DownloadTask extends AsyncTask<Void, Integer, String> {
      } finally {
          wl.release();
      }
+     
+     //save the last downloaded date
+     SharedPreferences settings = context.getSharedPreferences(HomeActivity.PREFS_NAME, 0);
+     SharedPreferences.Editor editor = settings.edit();
+     editor.putLong(HomeActivity.PREF_DOWNLOAD_KEY, System.currentTimeMillis());
+     editor.commit();
+     
      return null;
  }
  
