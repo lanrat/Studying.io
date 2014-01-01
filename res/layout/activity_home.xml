@@ -12,6 +12,7 @@
         android:layout_marginBottom="@dimen/abs__action_bar_default_height" >
 
         <LinearLayout
+            android:id="@+id/boxList"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
