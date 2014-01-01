@@ -58,7 +58,7 @@ public class HomeActivity extends SherlockActivity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.hintButton:
-			if (hintCount >= question.getHintCount()) {
+			if (question != null && hintCount >= question.getHintCount()) {
 		         Toast.makeText(this,getString(R.string.no_more_hints), Toast.LENGTH_SHORT).show();
 			}else {
 				hintShown = true;
