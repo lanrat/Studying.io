@@ -2,11 +2,14 @@
 <resources>
     <string name="app_name">Studying.io</string>
     <string name="JSON_URL">http://studying.io/q.json</string>
+    <string name="local_JSON_filename">q.json</string>
+    <string name="downloading_message">Acquiring latest questions</string>
+    <string name="loading_message">Loading questions…</string>
     
-    <string name="test_question">Write an algorithm to decide if two ascii strings are anagrams or not.</string>
-    <string name="test_answer">Possible answer:return sort(a) == sort(b). Or create two arrays of 255 length, and loop through each string and add the character count to the array, then compare the two arrays.</string>
-    <string name="test_hint">What special characteristics do anagrams have that other strings don\'t have?</string>
-    <string name="test_example">Input:\'tar\', \'rat\'. Output: true</string>
+    <string name="test_question">Why did the chicken cross the road?</string>
+    <string name="test_answer">Because it wants to get on the other side!</string>
+    <string name="test_hint">Try running this application with an active internet connection</string>
+    <string name="test_example">Turn on WIFI</string>
         
     <string name="answer_title">ANSWER</string>
     <string name="hint_title">HINT</string>

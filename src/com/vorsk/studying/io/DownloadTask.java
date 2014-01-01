@@ -11,6 +11,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -28,13 +29,15 @@ public class DownloadTask extends AsyncTask<Void, Integer, String> {
  public DownloadTask(Context context) {
      this.context = context;
      mProgressDialog = new ProgressDialog(context);
-     mProgressDialog.setMessage("Aquiring latest Questions"); //TODO replace with string resource
+     mProgressDialog.setMessage(context.getString(R.string.downloading_message));
      mProgressDialog.setIndeterminate(true);
      mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
      mProgressDialog.setCancelable(false);
  }
 
- @Override
+ @SuppressLint("Wakelock")
+@SuppressWarnings("resource")
+@Override
  protected String doInBackground(Void... nothing) {
      // take CPU lock to prevent CPU from going off if the user 
      // presses the power button during download
@@ -63,7 +66,7 @@ public class DownloadTask extends AsyncTask<Void, Integer, String> {
 
              // download the file
              input = connection.getInputStream();
-             output = context.openFileOutput("q.json",Context.MODE_PRIVATE); //TODO make string
+             output = context.openFileOutput(context.getString(R.string.local_JSON_filename),Context.MODE_PRIVATE);
 
              byte data[] = new byte[4096];
              long total = 0;
@@ -123,7 +126,7 @@ public class DownloadTask extends AsyncTask<Void, Integer, String> {
      if (result != null) {
          Toast.makeText(context,"Download error: "+result, Toast.LENGTH_LONG).show();
      }else {
-    	 Toast.makeText(context,"Download good", Toast.LENGTH_LONG).show();  //TODO RM
+    	 ((HomeActivity)context).dataReady();
      }
  }
  
