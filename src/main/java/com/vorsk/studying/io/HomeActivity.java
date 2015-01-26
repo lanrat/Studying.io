@@ -1,8 +1,8 @@
 package com.vorsk.studying.io;
 
-import com.actionbarsherlock.app.SherlockActivity;
 import com.tjeannin.apprate.AppRate;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,7 +13,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class HomeActivity extends SherlockActivity implements OnClickListener {
+public class HomeActivity extends Activity implements OnClickListener {
 
 	private static QuizManager qm;
 	public static final String PREFS_NAME = "StudyingPrefsFile";
